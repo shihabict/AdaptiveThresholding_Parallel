@@ -1,0 +1,5 @@
+mode,width,height,window_size,C,mpi_processes,omp_threads,time_seconds
+serial_1core,4000,3000,15,5,1,1,0.459776
+omp_1x4,4000,3000,15,5,1,4,0.131843
+mpi_4x1,4000,3000,15,5,4,1,1.00991
+hybrid_4x4,4000,3000,15,5,4,4,0.917394

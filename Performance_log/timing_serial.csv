@@ -1,0 +1,2 @@
+width,height,window_size,C,mpi_processes,omp_threads,time_seconds
+4000,3000,15,5,1,1,0.459776

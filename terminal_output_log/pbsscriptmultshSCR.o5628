@@ -1,0 +1,36 @@
+Converting input_img.jpg -> input.pgm ...
+Converted: input_img.jpg -> input.pgm
+======================================================
+ 1) SERIAL BASELINE (no MPI, 1 thread)
+======================================================
+No protocol specified
+No protocol specified
+No protocol specified
+T_hybrid (1 MPI procs, 1 OMP threads) = 0.00983408 s
+======================================================
+ 2) OPENMP ONLY (MPI=1, OMP=4)
+======================================================
+No protocol specified
+No protocol specified
+T_hybrid (1 MPI procs, 4 OMP threads) = 0.00331746 s
+======================================================
+ 3) MPI ONLY (MPI=4, OMP=1)
+======================================================
+No protocol specified
+No protocol specified
+T_hybrid (4 MPI procs, 1 OMP threads) = 0.00375405 s
+======================================================
+ 4) HYBRID (MPI=4, OMP=4)
+======================================================
+No protocol specified
+No protocol specified
+T_hybrid (4 MPI procs, 4 OMP threads) = 0.00419276 s
+======================================================
+All runs finished.
+Summary timings saved in: timing_summary.csv
+Output images:
+  Serial : output_serial.pgm
+  OpenMP : output_omp4.pgm
+  MPI    : output_mpi4.pgm
+  Hybrid : output_hybrid4x4.pgm
+======================================================
