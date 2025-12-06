@@ -59,7 +59,7 @@ Project_Hybrid/
 └── README.md
 ```
 
-## 🧪 Performance Summary (4K Image Test)
+## 🧪 Performance Summary (4000x3000 Image Test)
 
 | Mode | MPI | OMP | Total Cores | Time (s) | Speedup |
 |------|-----|-----|-------------|----------|---------|
@@ -68,14 +68,23 @@ Project_Hybrid/
 | mpi_4x1 | 4 | 1 | 4 | 1.0099 | 0.45× |
 | hybrid_4x4 | 4 | 4 | 16 | 0.9174 | 0.50× |
 
+
+## 🧪 Performance Summary (600×397 Image Test)
+
+| Mode | MPI | OMP | Total Cores | Time (s) | Speedup |
+|------|-----|-----|-------------|----------|---------|
+| serial_1core | 1 | 1 | 1 | 0.00956025 | 1.00× |
+| omp_1x4 | 1 | 4 | 4 | 0.00348876 | 2.74× |
+| mpi_4x1 | 4 | 1 | 4 | 0.0040714 | 2.35× |
+| hybrid_4x4 | 4 | 4 | 16 | 0.00844843 | 1.13× |
+
 ### 📝 Interpretation
 
-- **OpenMP-only** performs best (shared memory, no communication overhead).
-- **MPI-only** and **Hybrid** versions are slower because:
-  - 4K image + integral table ≈ 60 MB broadcast/gather per run
-  - Gigabit network → communication dominates
-  - Computation on ARM Cortex A72 nodes is relatively light
-- These results highlight an important HPC reality: For moderately sized images, intra-node parallelism outperforms inter-node MPI due to communication costs.
+- **OpenMP-only** achieves the best speedup (2.74× on 4 cores), benefiting from shared memory with no communication overhead.
+- **MPI-only** shows reasonable speedup (2.35× on 4 cores), but inter-node communication costs start to impact performance.
+- **Hybrid MPI+OpenMP** shows modest speedup (1.13× on 16 cores) because the communication overhead of broadcasting the 600×397 image and integral table across nodes dominates the computation time.
+- For smaller images, the MPI communication latency and bandwidth become the limiting factor, making intra-node OpenMP parallelism more efficient.
+- These results highlight a key HPC insight: **Hybrid parallelism is most beneficial for larger images or higher computational intensity** where computation time outweighs communication costs.
 
 ## ▶️ How to Build and Run
 
