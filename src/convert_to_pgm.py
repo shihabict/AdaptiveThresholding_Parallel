@@ -1,6 +1,10 @@
-from PIL import Image
+from PIL import Image, ImageFile
 import sys
 import os
+
+
+# ✅ Allow loading truncated images
+ImageFile.LOAD_TRUNCATED_IMAGES = True
 
 def convert_jpg_to_pgm(input_path, output_path):
     # Open image
