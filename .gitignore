@@ -40,3 +40,4 @@
 # debug information files
 *.dwo
 parallel_env/
+data/input_imgs/highway_4k.jpg
